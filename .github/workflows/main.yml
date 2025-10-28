@@ -40,7 +40,7 @@ jobs:
         }
       
     - name: Configure vcpkg paths
-      shell: pwsh
+      shell: cmd
       run: |
         dir /s D:/a/NoitaSeedSearcherCUDA/NoitaSeedSearcherCUDA/vcpkg/packages/
       
