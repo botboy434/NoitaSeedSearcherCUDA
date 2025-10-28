@@ -42,7 +42,7 @@ jobs:
     - name: Configure vcpkg paths
       shell: cmd
       run: |
-        dir /s D:/a/NoitaSeedSearcherCUDA/NoitaSeedSearcherCUDA/vcpkg/packages/
+        dir /s "D:\a\NoitaSeedSearcherCUDA\NoitaSeedSearcherCUDA\vcpkg\packages\"
       
     - name: Build project
       shell: pwsh
