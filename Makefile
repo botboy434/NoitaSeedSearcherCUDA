@@ -1,6 +1,6 @@
 CC:=clang
 VCPKG_INCLUDE=D:/a/NoitaSeedSearcherCUDA/NoitaSeedSearcherCUDA/vcpkg/packages/libpng_x64-windows/include
-CFLAGS:= -target x86_64-pc-windows-msvc -std=c++23 -O3 -march=native -fwrapv -Wno-enum-compare -g -I$(VCPKG_INCLUDE) --cuda-path 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.9'
+CFLAGS:= -target x86_64-pc-windows-msvc -std=c++23 -O3 -march=native -fwrapv -Wno-enum-compare -g -I$(VCPKG_INCLUDE) --cuda-path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9"
 #  --cuda-gpu-arch=sm_75 -L/usr/local/cuda-12.4/lib64 -lsfml-system -lsfml-graphics -lsfml-window -lcudart -ldl -lrt
 LIBS:=-lpng -lstdc++ -lm -L$(VCPKG_LIB)
 SRC:=$(wildcard src/*.cu) $(wildcard src/*.cpp) main.cu $(wildcard include/*.h)
