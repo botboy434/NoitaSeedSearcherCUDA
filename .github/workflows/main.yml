@@ -45,6 +45,7 @@ jobs:
       run: |
         echo "INCLUDE=C:\vcpkg\installed\x64-windows\include" >> $env:GITHUB_ENV
         echo "LIB=C:\vcpkg\installed\x64-windows\lib" >> $env:GITHUB_ENV
+        dir C:\vcpkg\installed\x64-windows\include\
       
     - name: Build project
       shell: pwsh
