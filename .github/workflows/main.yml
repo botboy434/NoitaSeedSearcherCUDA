@@ -24,7 +24,7 @@ jobs:
     - name: Build project
       shell: bash
       run: |
-        make NoitaChestFinder.exe
+        make NoitaChestFinder
 
     - name: Test build
       shell: bash
