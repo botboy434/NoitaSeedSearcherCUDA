@@ -1,8 +1,10 @@
 CC:=clang
-
-CFLAGS:= -target x86_64-pc-windows-msvc -std=c++23 -O3 -march=native -fwrapv -Wno-enum-compare -g
+VCPKG_ROOT=C:/vcpkg
+VCPKG_INCLUDE=$(VCPKG_ROOT)/installed/x64-windows/include
+VCPKG_LIB=$(VCPKG_ROOT)/installed/x64-windows/lib
+CFLAGS:= -target x86_64-pc-windows-msvc -std=c++23 -O3 -march=native -fwrapv -Wno-enum-compare -g -I$(VCPKG_INCLUDE)
 #  --cuda-gpu-arch=sm_75 -L/usr/local/cuda-12.4/lib64 -lsfml-system -lsfml-graphics -lsfml-window -lcudart -ldl -lrt
-LIBS:=-lpng -lstdc++ -lm
+LIBS:=-lpng -lstdc++ -lm -L$(VCPKG_LIB)
 SRC:=$(wildcard src/*.cu) $(wildcard src/*.cpp) main.cu $(wildcard include/*.h)
 
 NoitaChestFinder: $(SRC)
