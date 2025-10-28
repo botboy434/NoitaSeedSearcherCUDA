@@ -39,7 +39,12 @@ jobs:
             echo "$($_.Split('=')[0])=$($_.Split('=')[1])" >> $env:GITHUB_ENV
           }
         }
-
+    - name: Configure environment paths
+      shell: pwsh
+      run: |
+        echo "CPATH=C:\vcpkg\installed\x64-windows\include" >> $env:GITHUB_ENV
+        echo "LIBRARY_PATH=C:\vcpkg\installed\x64-windows\lib" >> $env:GITHUB_ENV
+      
     - name: Build project
       shell: pwsh
       run: |
