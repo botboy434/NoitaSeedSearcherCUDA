@@ -5,10 +5,11 @@ on:
     branches: [ rewrite-2 ]
   pull_request:
     branches: [ rewrite-2 ]
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
@@ -16,19 +17,22 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y clang libpng-dev build-essential
+        choco install -y llvm
+        choco install -y mingw
+        # Install any other required libraries if needed
 
     - name: Build project
+      shell: bash
       run: |
-        make NoitaChestFinder
+        make NoitaChestFinder.exe
 
     - name: Test build
+      shell: bash
       run: |
-        ./NoitaChestFinder --help || true
+        ./NoitaChestFinder.exe --help || true
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: NoitaChestFinder
-        path: NoitaChestFinder
+        path: NoitaChestFinder.exe
