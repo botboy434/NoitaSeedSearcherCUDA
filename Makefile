@@ -6,7 +6,7 @@ LIBS:=-lpng -lstdc++ -lm
 SRC:=$(wildcard src/*.cu) $(wildcard src/*.cpp) main.cu $(wildcard include/*.h)
 
 NoitaChestFinder: $(SRC)
-	$(CC) $(CFLAGS) $(LIBS) -xc++ main.cu -o NoitaChestFinder
+	$(CC) $(CFLAGS) $(LIBS) -xc++ main.cu -o NoitaChestFinder.exe
 
 build_profiled:
 	$(CC) $(CFLAGS) $(LIBS) -fprofile-use=code.profdata -xc++ main.cu -o NoitaChestFinder
