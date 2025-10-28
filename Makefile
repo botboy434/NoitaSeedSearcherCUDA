@@ -1,4 +1,4 @@
-CC:=clang
+CC:=x86_64-w64-mingw32-clang++
 
 CFLAGS:=-Iinclude -std=c++23 -O3 -march=native -fwrapv -Wno-enum-compare -g
 #  --cuda-gpu-arch=sm_75 -L/usr/local/cuda-12.4/lib64 -lsfml-system -lsfml-graphics -lsfml-window -lcudart -ldl -lrt
