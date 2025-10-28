@@ -2,9 +2,9 @@ name: Build NoitaChestFinder
 
 on:
   push:
-    branches: [ main ]
+    branches: [ rewrite-2 ]
   pull_request:
-    branches: [ main ]
+    branches: [ rewrite-2 ]
 
 jobs:
   build:
