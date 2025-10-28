@@ -39,10 +39,10 @@ jobs:
           }
         }
       
-    - name: Configure vcpkg paths
-      shell: cmd
-      run: |
-        dir /s "D:\a\NoitaSeedSearcherCUDA\NoitaSeedSearcherCUDA\vcpkg\packages\"
+    - name: Install CUDA
+      uses: webinstall/setup-cuda@v2
+      with:
+        version: '12.2.0'
       
     - name: Build project
       shell: pwsh
