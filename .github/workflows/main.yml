@@ -8,27 +8,38 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Install dependencies
+      shell: pwsh
       run: |
-        sudo apt-get update
-        sudo apt-get install -y clang libpng-dev build-essential mingw-w64
+        choco install -y llvm cmake ninja
+        git clone https://github.com/microsoft/vcpkg
+        .\vcpkg\bootstrap-vcpkg.bat
+
+        .\vcpkg\vcpkg install libpng:x64-windows
+
+        echo "C:\Program Files\LLVM\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "INCLUDE=C:\vcpkg\installed\x64-windows\include;$env:INCLUDE" >> $env:GITHUB_ENV
+        echo "LIB=C:\vcpkg\installed\x64-windows\lib;$env:LIB" >> $env:GITHUB_ENV
 
     - name: Build project
+      shell: pwsh
       run: |
+        echo "Using clang-cl to build..."
         make NoitaChestFinder
 
     - name: Test build
+      shell: pwsh
       run: |
-        ./NoitaChestFinder --help || true
+        ./NoitaChestFinder.exe --help || true
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: NoitaChestFinder
-        path: NoitaChestFinder
+        path: NoitaChestFinder.exe
